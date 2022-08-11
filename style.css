@@ -8,12 +8,12 @@
   --theme-bg-color: rgba(16 18 27 / 40%);
   --border-color: rgba(113 119 144 / 25%);
   --theme-color: #f9fafb;
-  --inactive-color: rgb(249 250 251 / 89%);
+  --inactive-color: rgb(113 119 144 / 78%);
   --body-font: "Poppins", sans-serif;
   --hover-menu-bg: rgba(12 15 25 / 30%);
   --content-title-color: #999ba5;
   --content-bg: rgb(146 151 179 / 13%);
-  --button-inactive: rgb(249 250 251 / 89%);
+  --button-inactive: rgb(249 250 251 / 55%);
   --dropdown-bg: #21242d;
   --dropdown-hover: rgb(42 46 60);
   --popup-bg: rgb(22 25 37);
@@ -45,7 +45,7 @@ html {
 
 body {
   font-family: var(--body-font);
-  background-image: url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-dark-wwdc-2020-5120x2880-1432.jpg);
+  background-image: url(https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -60,24 +60,24 @@ body {
   body {
     padding: 0.8em;
   }
-  
-  .video-bg {
+}
+
+.video-bg {
   position: fixed;
   right: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  }
-  .video-bg video {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  }
+}
+.video-bg video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
-  img {
-    max-width: 100%;
+img {
+  max-width: 100%;
 }
 
 .dark-light {
@@ -116,7 +116,8 @@ body {
   background-color: rgba(255, 255, 255, 0.94);
 }
 
-body.light-mode:before {
+body.light-mode:before,
+body.light-mode .video-bg:before {
   content: "";
   position: absolute;
   left: 0;
@@ -136,6 +137,7 @@ body.light-mode:before {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
   width: 100%;
   border-radius: 14px;
   backdrop-filter: blur(20px);
@@ -346,7 +348,7 @@ body.light-mode:before {
 }
 
 .side-title {
-  color: var(--theme-color);
+  color: var(--inactive-color);
   margin-bottom: 14px;
 }
 
@@ -527,13 +529,11 @@ body.light-mode:before {
 }
 
 .content-section {
-  font-weight: 300;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
 }
 .content-section-title {
-  font-weight: 400;
   color: var(--content-title-color);
   margin-bottom: 14px;
 }
