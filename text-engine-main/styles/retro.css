@@ -62,13 +62,13 @@ body::after {
 }
 
 a {
-  color: orange;
+  color: green;
 }
 
 #input {
   height: 4vh;
   width: 98.5vh;
-  color: orange;
+  color: green;
   background: transparent;
   font-size: 2vh;
   font-family: "Apple II";
@@ -87,9 +87,9 @@ span {
 }
 
 @keyframes blink {
-  0% {background: orange;}
-  49% {background: orange;}
+  0% {background: green;}
+  49% {background: green;}
   60% {background: transparent;}
   99% {background: transparent;}
-  100% {background: orange;}
+  100% {background: green;}
 }
