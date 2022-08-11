@@ -106,7 +106,8 @@ img {
 .light-mode .profile-img {
   border: 2px solid var(--theme-bg-color);
 }
-.light-mode .content-section ul {
+.light-mode 
+ul {
   background-color: var(--theme-bg-color);
 }
 .light-mode .pop-up__title {
@@ -532,10 +533,13 @@ body.light-mode .video-bg:before {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+  font-size: 11px;
+  font-weight: lighter;
 }
 .content-section-title {
   color: var(--content-title-color);
   margin-bottom: 14px;
+  font-size: 14px;
 }
 .content-section ul {
   display: flex;
