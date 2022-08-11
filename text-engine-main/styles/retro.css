@@ -10,7 +10,7 @@ body {
   line-height: 4vh;
   /* screen glow */
   background-image: radial-gradient(
-    #00FF00, black 120%
+    #003300, black 120%
   );
   /* text glow */
   text-shadow: 0 0 5px rgba(0, 255, 0, 0.6);
@@ -24,7 +24,7 @@ body::after {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: repeating-linear-gradient(rgba(255, 78, 0, 0.03) 0.5vh, rgba(0, 0, 0, 0.05) 0.8vh);
+  background: repeating-linear-gradient(rgba(0, 50, 0, 0.03) 0.3vh, rgba(0, 0, 0, 0.05) 0.7vh);
   z-index: -1;
 }
 
