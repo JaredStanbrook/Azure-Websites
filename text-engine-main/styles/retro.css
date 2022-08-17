@@ -13,7 +13,7 @@ body {
     #003300, black 120%
   );
   /* text glow */
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.6);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
 }
 
 /* scanlines */
