@@ -60,9 +60,9 @@ const newDiskTemplate = () => ({
           id: 'end',
         },
       ],
-    }
+    },
     {
-      id: 'title',
+      id: 'end',
       img: `
       .-.
      (o.o)
@@ -79,6 +79,9 @@ const newDiskTemplate = () => ({
      || ||
     ==' '==
       `,
+      onEnter() {
+        println('The End', 'title');
+      },
       name: 'The Very End',
       desc: "This is the room north of a Forest Clearing Cassey Taylor.",
       exits: [
