@@ -13,7 +13,7 @@ body {
     #003300, black 120%
   );
   /* text glow */
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 1);
 }
 
 /* scanlines */
@@ -68,7 +68,7 @@ a {
 #input {
   height: 4vh;
   width: 98.5vh;
-  color: green;
+  color: #00FF00;
   background: transparent;
   font-size: 2vh;
   font-family: "Apple II";
