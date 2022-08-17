@@ -665,6 +665,9 @@ let commands = [
     look,
     l: look, // shortcut for look
     go,
+    move: go,
+    walk: go,
+    advance: go,
     n,
     s,
     e,
@@ -677,6 +680,7 @@ let commands = [
     t: talk, // shortcut for talk
     take,
     get: take,
+    grab: take,
     items,
     use,
     chars,
