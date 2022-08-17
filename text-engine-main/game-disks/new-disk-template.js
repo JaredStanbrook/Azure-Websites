@@ -49,11 +49,45 @@ const newDiskTemplate = () => ({
     {
       id: 'clearing',
       name: 'A Forest Clearing',
-      desc: `It's a forest clearing. To the SOUTH is The First Room.`,
+      desc: "It's a forest clearing. To the SOUTH is The First Room.",
       exits: [
         {
           dir: 'south',
           id: 'start',
+        },
+        {
+          dir: 'north',
+          id: 'end',
+        },
+      ],
+    }
+    {
+      id: 'title',
+      img: `
+      .-.
+     (o.o)
+      |=|
+     __|__
+   //.=|=.\\\\
+  // .=|=. \\\\
+  \\\\ .=|=. //
+   \\\\(_=_)//
+    (:| |:)
+     || ||
+     () ()
+     || ||
+     || ||
+    ==' '==
+      `,
+      onEnter() {
+        println('The End', 'title');
+      },
+      name: 'The Very End',
+      desc: "This is the room north of a Forest Clearing Cassey Taylor.",
+      exits: [
+        {
+          dir: 'south',
+          id: 'clearing',
         },
       ],
     }
