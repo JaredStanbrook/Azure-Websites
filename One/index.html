@@ -6,6 +6,21 @@
   <title>Jared Stanbrook - Website</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./style.css">
+ <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+  <script type="application/javascript">
+$.getJSON('https://api.ipify.org?format=json', function(data){
+    console.log(data.ip);
+     $.ajax({
+            type : "POST",  //type of method
+            url  : "cookie.php",  //your script php
+            data : { ip:data.ip },// passing the values
+            success: function(res){  
+                                    //do what you want here...
+                    }
+        });
+});
+</script>
 </head>
 <body>
 <div class="video-bg">
