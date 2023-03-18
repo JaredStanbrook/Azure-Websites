@@ -9,7 +9,7 @@ body {
   background-color: rgb(247, 193, 236);
 }
 
-p, h1, h2, h3, h4 {
+h1, h2, h3, h4 {
   display: inline-block;
   margin-block-start: 0em;
   margin-block-end: 0em;
@@ -18,6 +18,23 @@ p, h1, h2, h3, h4 {
   padding-inline-start: 0px;
 }
 
+@font-face {
+  font-family: "Cassey";
+  src: url("font.ttf") format("truetype");
+}
+
+p {
+  font-family: cassey;
+  font-size: 1.2em;
+  color: rgb(255, 230, 250);
+  margin: 6px;
+
+}
+.stack-top {
+  position: absolute;
+  z-index: 9;
+
+}
 .wrapper {
   position: absolute;
   width: 100%;
@@ -30,7 +47,7 @@ p, h1, h2, h3, h4 {
 
 .leg {
   position: absolute;
-  background-image: url(https://dl.dropboxusercontent.com/s/htfkbi7jkfboifn/leg.png?dl=0);
+  background-image: url('../leg.png');
   width: calc(2 * 8px);
   height: calc(2 * 12px);
   background-size: calc(2 * 8px) calc(2 * 12px) !important; 
@@ -39,7 +56,7 @@ p, h1, h2, h3, h4 {
 
 .body {
   position: absolute;
-  background-image: url(https://dl.dropboxusercontent.com/s/bsgjq1dnhy7ofzw/body.png?dl=0);
+  background-image: url('../body.png');
   width: calc(2 * 6 * 48px);
   height: calc(2 * 48px);
   background-size: calc(2 * 6 * 48px) calc(2 * 48px) !important; 
@@ -60,14 +77,14 @@ p, h1, h2, h3, h4 {
 
 .head {
   position: absolute;
-  background-image: url(https://dl.dropboxusercontent.com/s/zmp853grh77dnwu/head.png?dl=0);
+  background-image: url('../head.png');
   width: calc(2 * 6 * 31px);
   height: calc(2 * 32px);
   background-size: calc(2 * 6 * 31px) calc(2 * 32px) !important; 
 }
 
 .head-wrapper.happy > .head {
-  background-image: url(https://dl.dropboxusercontent.com/s/9o0cau45ndqllsq/headhappy.png?dl=0);
+  background-image: url('../head.png');
 }
 
 .head-wrapper.happy {
@@ -90,7 +107,7 @@ p, h1, h2, h3, h4 {
 
 .tail {
   position: absolute;
-  background:url(https://dl.dropboxusercontent.com/s/yyjrh3ti2c1dmuv/tail.png?dl=0);
+  background:url('../tail.png');
   width: calc(2 * 8px);
   height: calc(2 * 8px);
   background-size: calc(2 * 8px) !important; 
@@ -159,14 +176,14 @@ p, h1, h2, h3, h4 {
 
 .sign {
   position: absolute;
-  color: #d881db;
+  color: #9a5838;
   bottom: 10px;
   right: 10px;
   font-size: 10px;
 }
 
 a {
-  color: #d881db;
+  color: #9a5838;
   text-decoration: none;
 }
 
