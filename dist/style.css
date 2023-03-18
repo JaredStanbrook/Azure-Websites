@@ -25,15 +25,16 @@ h1, h2, h3, h4 {
 
 p {
   font-family: cassey;
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: rgb(255, 230, 250);
   margin: 6px;
 
 }
 .stack-top {
   position: absolute;
+  margin: 8px;
   z-index: 9;
-  text-align: center;
+  text-align: left;
   width: 100%;
 }
 .wrapper {
@@ -48,7 +49,7 @@ p {
 
 .leg {
   position: absolute;
-  background-image: url(https://dl.dropboxusercontent.com/s/htfkbi7jkfboifn/leg.png?dl=0);
+  background-image: url('../leg.png');
   width: calc(2 * 8px);
   height: calc(2 * 12px);
   background-size: calc(2 * 8px) calc(2 * 12px) !important; 
@@ -57,7 +58,7 @@ p {
 
 .body {
   position: absolute;
-  background-image: url(https://dl.dropboxusercontent.com/s/bsgjq1dnhy7ofzw/body.png?dl=0);
+  background-image: url('../body.png');
   width: calc(2 * 6 * 48px);
   height: calc(2 * 48px);
   background-size: calc(2 * 6 * 48px) calc(2 * 48px) !important; 
@@ -78,14 +79,14 @@ p {
 
 .head {
   position: absolute;
-  background-image: url(https://dl.dropboxusercontent.com/s/zmp853grh77dnwu/head.png?dl=0);
+  background-image: url('../head.png');
   width: calc(2 * 6 * 31px);
   height: calc(2 * 32px);
   background-size: calc(2 * 6 * 31px) calc(2 * 32px) !important; 
 }
 
 .head-wrapper.happy > .head {
-  background-image: url(https://dl.dropboxusercontent.com/s/9o0cau45ndqllsq/headhappy.png?dl=0);
+  background-image: url('../head.png');
 }
 
 .head-wrapper.happy {
@@ -108,7 +109,7 @@ p {
 
 .tail {
   position: absolute;
-  background:url(https://dl.dropboxusercontent.com/s/yyjrh3ti2c1dmuv/tail.png?dl=0);
+  background:url('../tail.png');
   width: calc(2 * 8px);
   height: calc(2 * 8px);
   background-size: calc(2 * 8px) !important; 
