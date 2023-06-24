@@ -1,73 +1,1311 @@
 <!DOCTYPE html>
 <html lang="en" >
+
 <head>
   <meta charset="UTF-8">
-  <title>The Lung Warrior Incorporated</title>
-  <link rel="stylesheet" href="./style.css">
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+
+  
+  <title>CodePen - React Pokedex</title>
+    <link rel="canonical" href="https://codepen.io/siliconunicorn/pen/VqoxXP" />
+  
+  
+  
+  
+<style>
+h1 {
+    color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(
+        0deg,
+        rgba(41, 41, 41, 1) 4%,
+        rgba(49, 49, 49, 1) 50%,
+        rgba(128, 128, 128, 1) 64%,
+        rgba(138, 138, 138, 1) 70%,
+        rgba(230, 230, 230, 1) 81%,
+        rgba(255, 255, 255, 1) 86%,
+        rgba(220, 220, 220, 1) 89%,
+        rgba(230, 230, 230, 1) 100%
+    );
+    background-color: #09a8ff;
+    background-blend-mode: overlay;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.pokedex {
+    background-color: #e61515;
+    width: 848px;
+    margin: 0 auto;
+    padding: 1em;
+    border-radius: 15px;
+    border: double black 10px;
+    display: flex;
+}
+
+.panel {
+    width: 359px;
+    padding: 10px;
+    border: inset #b31818 3px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-panel {
+    padding: 0;
+    width: 379px;
+}
+
+.panel-row {
+    display: flex;
+    border-bottom: groove #757575 3px;
+    justify-content: space-evenly;
+}
+
+.panel-row:last-child {
+    border-top: groove #757575 3px;
+    border-bottom: none;
+}
+
+.divider {
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    margin: 0 20px;
+    align-items: center;
+    border: inset #460f0f 4px;
+    border-radius: 4px;
+    background: #460f0f;
+}
+
+.divider > * {
+    border-radius: 4px;
+    border: solid #2d0d0d 2px;
+}
+
+.hinge {
+    background: linear-gradient(90deg, #891313 0, #b31818 30%, #e61515 45%, #fd5555 65%, #e61515 95%);
+    border-right-color: #fd5555;
+    border-top-color: #fd5555;
+    flex: 10;
+    width: 100%;
+    border-left-color: #5f1010;
+}
+.gap:first-child {
+    border-radius: 0 0 5px 5px;
+    border-top: none;
+}
+.gap:last-child {
+    border-radius: 5px 5px 0 0;
+}
+.gap {
+    background: linear-gradient(90deg, #460f0f 0, #891313 30%, #b31818 45%, #fd5555 65%, #b31818 95%);
+    border-top-color: #891313;
+    border-right-color: #b31818;
+    flex: 1;
+    width: 95%;
+}
+.screen {
+    background: linear-gradient(14deg, rgb(165, 205, 83) 60%, rgb(193, 217, 144) 65%);
+    padding: 5px;
+    border-radius: 3px;
+    font-family: "VT323";
+    border: inset #879a65 3px;
+}
+.pokemon-name {
+    font-size: 28px;
+    letter-spacing: 4px;
+    text-transform: capitalize;
+    height: 45px;
+    box-sizing: border-box;
+}
+.name-no {
+    float: right;
+    text-transform: lowercase;
+}
+.pokemon-description {
+    font-size: 18px;
+    letter-spacing: 0;
+    min-height: 115px;
+    box-sizing: border-box;
+    flex: 1;
+}
+.pokemon-sprite {
+    width: 100%;
+    display: flex;
+    image-rendering: pixelated;
+    border: inset #9aa28b 3px;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    background: linear-gradient(15deg, #cad5b5 64%, #dde2d4 70%, #dde2d4 81%, #fff 86%, #dde2d4 89%, #dde2d4 100%);
+}
+.sprite-controls {
+    display: flex;
+    justify-content: space-around;
+    font-family: "Staatliches", cursive;
+    margin-bottom: 10px;
+}
+
+.sprite-control {
+    height: 30px;
+    width: 30px;
+    border: groove grey 3px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(60deg);
+    color: black;
+    padding: 1px;
+    border-color: #b06868;
+}
+
+.sprite-control:hover {
+    border-color: #b8ed7c;
+}
+.sprite-control:active {
+    border-color: #f4fcb9;
+}
+
+.sprite-control > * {
+    transform: rotate(-60deg);
+}
+
+.sprite-controls-shiny {
+    transform: rotate(0);
+    background: linear-gradient(14deg, #bf8823 10%, #ffee90 25%, #e6a617 47%, #ffee90 73%, #fff6c8 74%, #ffee90 80%);
+    border-color: #cdb589;
+    width: 90px;
+    text-shadow: white -1px 1px;
+}
+
+.sprite-control-selected {
+    border-color: #b8ed7c;
+}
+
+.sprite-controls-shiny > * {
+    transform: rotate(0);
+}
+.pokemon-sprite-small {
+    height: 120px;
+    width: 120px;
+    margin: 3px 0;
+}
+/* types */
+.type {
+    color: rgba(0, 0, 0, 0.9);
+    text-transform: capitalize;
+    font-size: 1.25em;
+    padding: 2px;
+    margin: 2px;
+    border: groove #757575 3px;
+    border-radius: 10px;
+    width: 150px;
+    font-family: "Staatliches", cursive;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: rgba(255, 255, 255, 0.3) -1px 1px;
+    align-self: center;
+    background: linear-gradient(
+        15deg,
+        rgba(128, 128, 128, 0.5) 64%,
+        rgba(138, 138, 138, 0.5) 70%,
+        rgba(230, 230, 230, 0.5) 81%,
+        rgba(255, 255, 255, 0.5) 86%,
+        rgba(220, 220, 220, 0.5) 89%,
+        rgba(230, 230, 230, 0.5) 100%
+    );
+    background-blend-mode: hard-light;
+}
+.panel-header {
+    text-transform: capitalize;
+    font-size: 1.25em;
+    padding: 5px;
+    font-family: "Staatliches", cursive;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(14deg, #460f0f 0, #891313 30%, #b31818 45%, #fd5555 65%, #b31818 95%);
+    border: groove #e61515 3px;
+    border-width: 3px 2px;
+    text-shadow: #fd5555 -1px 1px;
+}
+.type-list {
+    display: flex;
+    flex-direction: column;
+    border-left: groove #757575 3px;
+    flex: 1;
+}
+.type-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-evenly;
+    background: linear-gradient(14deg, #afafaf 50%, #ffffff 80%, #afafaf 90%);
+    border-top: groove #757575 3px;
+}
+.stats {
+    width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+    flex: 1;
+}
+.stat-line {
+    font-size: 17px;
+    text-transform: capitalize;
+}
+.panel-evo {
+    flex-wrap: wrap;
+}
+.empty-evo {
+    background: linear-gradient(15deg, #83887b 64%, #8b8f81 70%, #8b8f81 81%, #babfb1 86%, #8b8f81 89%, #8b8f81 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.poke-ball {
+    border: solid black 4px;
+    background: black;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    position: relative;
+    opacity: 0.8;
+}
+.poke-ball-top {
+    background: #83887a;
+    flex: 1;
+    width: 100%;
+    opacity: 0.3;
+}
+.poke-ball-center {
+    display: flex;
+    width: 22px;
+    height: 22px;
+    border: solid black 4px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+}
+.poke-ball-dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: black;
+    border: solid #83887a 6px;
+}
+.poke-ball-bottom {
+    background: #83887a;
+    flex: 1;
+    width: 100%;
+}
+.evo-header {
+    width: 100%;
+    /* background: linear-gradient(14deg, #460f0f 0, #891313 30%, #b31818 45%, #fd5555 65%, #b31818 95%);
+    border: groove #e61515 3px;
+    border-width: 5px 0;
+    text-shadow: #fd5555 -1px 1px; */
+    margin-bottom: 2px;
+}
+.evo-num {
+    /* padding: 2px;
+    font-size: 16px;
+    font-weight: bold;
+    background-blend-mode: color-dodge;
+    background: linear-gradient(
+        15deg,
+        rgba(128, 128, 128, 0.5) 64%,
+        rgba(138, 138, 138, 0.5) 70%,
+        rgba(230, 230, 230, 0.5) 81%,
+        rgba(255, 255, 255, 0.5) 86%,
+        rgba(220, 220, 220, 0.5) 89%,
+        rgba(230, 230, 230, 0.5) 100%
+    );
+    background-color: #3a3b38;
+    border-radius: 13px;
+    border-color: #888888;
+    text-shadow: #888888 -1px 1px;
+    width: 50%; */
+    font-family: "Staatliches", cursive;
+    font-size: 1.25em;
+    letter-spacing: 2px;
+    background: transparent;
+    border: none;
+    text-shadow: #e78181 -1px 1px;
+}
+.evo-name {
+    width: auto;
+    padding: 3px;
+    margin-bottom: 3px;
+    text-align: right;
+}
+.blue-buttons {
+    flex-wrap: wrap;
+    padding: 5px;
+}
+.blue-button {
+    height: 30px;
+    flex: 1 1 16%;
+    margin: 3px;
+    border: groove #6c96e6 3px;
+    border-radius: 5px;
+    background: linear-gradient(
+        15deg,
+        rgba(128, 128, 128, 0.5) 64%,
+        rgba(138, 138, 138, 0.5) 70%,
+        rgba(230, 230, 230, 0.5) 81%,
+        rgba(255, 255, 255, 0.5) 86%,
+        rgba(220, 220, 220, 0.5) 89%,
+        rgba(230, 230, 230, 0.5) 100%
+    );
+    background-blend-mode: hard-light;
+    background-color: #09a8ff;
+}
+.move-list {
+    display: flex;
+}
+.move-screen {
+    margin: 3px;
+    padding: 10px 20px;
+    flex: 1;
+}
+.move-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3px;
+}
+.move-name {
+    font-size: 24px;
+    border-bottom: solid black 2px;
+    /* padding: 0 5px; */
+    margin-bottom: 3px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.move-type {
+    font-size: 18px;
+    text-transform: uppercase;
+    border: solid black 2px;
+    border-radius: 7px;
+    padding: 2px 10px;
+    text-align: center;
+}
+.move-body {
+    display: flex;
+    justify-content: space-between;
+}
+.move-learn {
+    /* font-size: 20px; */
+    float: right;
+    margin-right: 3px;
+}
+.move-status {
+    text-transform: capitalize;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.move-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 10px 0 7px;
+}
+.move-arrow {
+    height: 40px;
+    width: 40px;
+    font-size: 37px;
+    border: groove grey 3px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: #e78181 -1px 1px;
+    cursor: pointer;
+    transform: rotate(60deg);
+}
+.move-arrow > * {
+    transform: rotate(-60deg);
+}
+.move-arrow:first-child > * {
+    padding-bottom: 5px;
+}
+.move-arrow:last-child > * {
+    padding-top: 1px;
+}
+.move-arrow:hover {
+    border-color: rgb(184, 237, 124);
+}
+.move-arrow:active {
+    border-color: rgb(244, 252, 185);
+}
+.down-arrow {
+    background: yellow;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.controls {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+.button {
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: outset rgb(248, 187, 187) 6px;
+    transform: rotate(60deg);
+    background: radial-gradient(
+        circle farthest-corner at 40% 25%,
+        rgb(218, 237, 241) 9%,
+        rgb(124, 214, 237) 20%,
+        rgb(64, 90, 165) 62%,
+        rgb(43, 125, 196) 100%
+    );
+    cursor: pointer;
+}
+.button:hover {
+    background: radial-gradient(
+        circle farthest-corner at 40% 25%,
+        rgb(233, 241, 218) 9%,
+        rgb(184, 237, 124) 20%,
+        rgb(64, 165, 106) 62%,
+        rgb(43, 196, 145) 100%
+    );
+}
+.button:active {
+    background: radial-gradient(
+        circle farthest-corner at 40% 25%,
+        rgb(229, 255, 181) 9%,
+        rgb(204, 237, 124) 20%,
+        rgb(103, 165, 64) 62%,
+        rgb(66, 204, 40) 100%
+    );
+}
+.button::after {
+    border: groove #460f0f 5px;
+    content: "";
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    border-radius: 50%;
+    left: -10px;
+    top: -10px;
+    border-style: double;
+    opacity: 0.75;
+}
+.prev {
+    border-right: 30px solid white;
+}
+.num {
+    color: blue;
+}
+.next {
+    border-left: 30px solid white;
+}
+.num-input {
+    width: 50px;
+    font-size: 20px;
+    height: 30px;
+    text-align: right;
+    align-self: center;
+}
+
+.submit {
+    width: 66px;
+    height: 18px;
+
+    border: groove #5f845e 3px;
+    background-color: #5ed75e;
+    border-radius: 20px;
+    box-sizing: border-box;
+    margin-top: 3px;
+    cursor: pointer;
+}
+.submit:hover {
+    border-color: #85ec4d;
+}
+
+.normal {
+    background-color: #bfbfbf;
+}
+.fighting {
+    background-color: #d87c58;
+}
+.flying {
+    background-color: #999ade;
+}
+.poison {
+    background-color: #925192;
+}
+.ground {
+    background-color: #dea761;
+}
+.rock {
+    background-color: #897864;
+}
+.bug {
+    background-color: #b1c967;
+}
+.ghost {
+    background-color: #c195dc;
+}
+.steel {
+    background-color: #49769c;
+}
+.fire {
+    background-color: #cf1414;
+}
+.water {
+    background-color: #1689de;
+}
+.grass {
+    background-color: #47a047;
+}
+.electric {
+    background-color: #e6b700;
+}
+.psychic {
+    background-color: #fa43b8;
+}
+.ice {
+    background-color: #98c3de;
+}
+.dragon {
+    background-color: #89315d;
+}
+.dark {
+    background-color: #282433;
+}
+.fairy {
+    background-color: #dca0ce;
+}
+.unknown {
+    background-color: #545454;
+}
+.shadow {
+    background-color: #364163;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
 </head>
-<body>
-  <section class="showcase">
-    <header>
-      <h1 class="logo">The Lung Warrior Incorporated</h1>
-      <div class="toggle"></div>
-    </header>
-    <div class="overlay">
-        <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 100 100">
-            <defs>
-                <style>
-                    @keyframes rotate {
-                        100% {
-                            transform: rotate(360deg);
-                        }
-                    }
-                    .out-top { /* Yellow */
-                        animation: rotate 20s linear infinite;
-                        transform-origin: 13px 25px;
-                        width: 50%;
-                        height: 50%;
-                    }
-                    .in-top { /* Brown */
-                        animation: rotate 10s linear infinite;
-                        transform-origin: 13px 25px;
-                    }
-                    .out-bottom { /* Dark Green */
-                        animation: rotate 25s linear infinite;
-                        transform-origin: 84px 93px;
-                    }
-                    .in-bottom { /* Purple */
-                        animation: rotate 15s linear infinite;
-                        transform-origin: 84px 93px;
-                    }
-                </style>
-            </defs>
-            <path fill="#ef9f40" class="out-top" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
-            <path fill="#95543e" class="in-top" d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z"/>
-            <path fill="#1d7150" class="out-bottom" d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"/>
-            <path fill="#844653" class="in-bottom" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"/>
-        </svg>
-    </div>
-    <div class="text">
-      <h3>Let’s help them</h3>
-      <h2>Breathe Easy</h2>
-      <p>We are a non-for-profit organisation that is registered as a charity with the Australian Charities and Not for Profit Commission (ACNC). The organisation was founded in August of 2021 following a personal journey that is very special and close to our hearts.</p>
-      <a href="#">Learn</a>
-    </div>
-    <ul class="social">
-      <li><a href="https://www.facebook.com/thelungwarriorincorporated"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a></li>
-      <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a></li>
-      <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
-    </ul>
-  </section>
-  <div class="menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">News</a></li>
-      <li><a href="#">Support</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-<!-- partial -->
-  <script  src="./script.js"></script>
+
+<body translate="no">
+  <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <title>Pokedex</title>
+        <link href="https://fonts.googleapis.com/css?family=Squada+One|Staatliches|VT323" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+            crossorigin="anonymous"
+       	/>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+        </body>
+</html>
+ 	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/16.7.0/umd/react.production.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.7.0/umd/react-dom.production.min.js'></script>
+      	<script id="rendered-js" type="module">
+
+
+const POKEMON = 1;
+
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function padStats(stat, val, sep, len) {
+  val = val || "xx";
+  let output = `
+    ${stat.toString()}${sep.repeat(len - (val.toString().length + stat.toString().length))}${val.toString()}`;
+  return output;
+}
+
+class Pokedex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      requestRoot: "https://pokeapi.co/api/v2/pokemon/",
+      pokemonIndex: POKEMON,
+      pokemonData: {},
+      pokemonDescription: "",
+      speciesData: {},
+      evoSprites: [],
+      evoNames: [],
+      moves: [],
+      loading: false };
+
+    this.nextPokemon = this.nextPokemon.bind(this);
+    this.previousPokemon = this.previousPokemon.bind(this);
+    this.pickPokemon = this.pickPokemon.bind(this);
+  }
+
+  nextPokemon() {
+    const next = Math.min(this.state.pokemonIndex + 1, 949);
+    this.setState({ pokemonIndex: next }, this.changePokemon);
+  }
+
+  previousPokemon() {
+    const prev = Math.max(this.state.pokemonIndex - 1, 1);
+    this.setState({ pokemonIndex: prev }, this.changePokemon);
+  }
+
+  pickPokemon(no) {
+    this.setState({ pokemonIndex: no }, this.changePokemon);
+  }
+
+  componentDidMount() {
+    this.changePokemon();
+  }
+
+  changePokemon() {
+    this.setState({ loading: true });
+    const request = `${this.state.requestRoot}${this.state.pokemonIndex}/`;
+    fetch(request, {
+      cache: "force-cache" }).
+
+    then(response => response.json()).
+    then(data => {
+      this.setState({
+        pokemonData: data,
+        pokemonIndex: data.id });
+
+      const speciesRequest = data.species.url;
+      return fetch(speciesRequest);
+    }).
+    then(response => response.json()).
+    then(data => {
+      this.setState({
+        speciesData: data,
+
+        description: pickRandom(
+        data.flavor_text_entries.filter(e => e.language.name === "en").map(e => e.flavor_text)),
+
+
+        loading: false });
+
+      const evo_chain = data.evolution_chain.url;
+      fetch(evo_chain).
+      then(response => response.json()).
+      then(data => {
+        const api = "https://pokeapi.co/api/v2/pokemon/";
+        const first = data.chain;
+        let second;
+        let third;
+        let evos = [];
+        if (first) {
+          const e1 = fetch(`${api}${first.species.name}/`);
+          evos.push(e1);
+          second = first.evolves_to[0];
+        }
+        if (second) {
+          const e2 = fetch(`${api}${second.species.name}/`);
+          third = second.evolves_to[0];
+
+          evos.push(e2);
+        }
+        if (third) {
+          const e3 = fetch(`${api}${third.species.name}/`);
+          evos.push(e3);
+        }
+        Promise.all(evos).
+        then(responses => Promise.all(responses.map(value => value.json()))).
+        then(dataList => {
+          const sprites = dataList.map(v => v.sprites.front_default);
+          const names = dataList.map(n => n.name);
+          this.setState({ evoSprites: sprites, evoNames: names });
+        });
+      });
+    });
+  }
+
+  render() {
+    const pData = this.state.pokemonData;
+    const sData = this.state.speciesData;
+
+    return /*#__PURE__*/(
+      React.createElement("div", { className: "pokedex" }, /*#__PURE__*/
+      React.createElement(LeftPanel, {
+        pData: pData,
+        sData: sData,
+        no: this.state.pokemonIndex,
+        description: this.state.description }), /*#__PURE__*/
+
+      React.createElement(Divider, null), /*#__PURE__*/
+      React.createElement(RightPanel, {
+        pData: pData,
+        sData: sData,
+        evoSprites: this.state.evoSprites,
+        evoNames: this.state.evoNames,
+        controls: { next: this.nextPokemon, prev: this.previousPokemon, pick: this.pickPokemon },
+        no: this.state.pokemonIndex })));
+
+
+
+
+  }}
+
+
+function LeftPanel(props) {
+  const pData = props.pData;
+
+  if (typeof pData === "object" && Object.keys(pData).length !== 0) {
+    return /*#__PURE__*/(
+      React.createElement("div", { className: "panel left-panel" }, /*#__PURE__*/
+      React.createElement(PokemonName, { name: pData.name, no: props.no }), /*#__PURE__*/
+      React.createElement(PokemonSprite, { src: pData.sprites }), /*#__PURE__*/
+      React.createElement(PokemonDescription, { description: props.description, no: props.no })));
+
+
+  } else {
+    return Loading();
+  }
+}
+
+function PokemonName(props) {
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "pokemon-name screen" },
+    props.name, /*#__PURE__*/
+    React.createElement("span", { className: "name-no" }, "no. ", props.no)));
+
+
+}
+
+class PokemonSprite extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      front: true,
+      shiny: false,
+      female: false };
+
+
+    this.toggleGender = this.toggleGender.bind(this);
+    this.toggleShiny = this.toggleShiny.bind(this);
+    this.toggleFront = this.toggleFront.bind(this);
+  }
+
+  buildImage() {
+    const dir = this.state.front ? "front" : "back";
+    const gender = this.state.female ? "_female" : "";
+    const shiny = this.state.shiny ? "_shiny" : "_default";
+    // console.log(dir + shiny + gender);
+    return dir + shiny + gender;
+  }
+
+  toggleGender() {
+    // console.log("toggling gender");
+    this.setState({ female: !this.state.female }, () => {
+      if (this.props.src[this.buildImage()]) {
+        return;
+      } else {
+        this.setState({ female: false });
+      }
+    });
+  }
+
+  toggleShiny() {
+    // console.log("toggling shiny");
+    this.setState({ shiny: !this.state.shiny }, () => {
+      if (this.props.src[this.buildImage()]) {
+        return;
+      } else {
+        this.setState({ shiny: false });
+      }
+    });
+  }
+
+  toggleFront() {
+    // console.log("toggling front");
+    this.setState({ front: !this.state.front }, () => {
+      if (this.props.src[this.buildImage()]) {
+        return;
+      } else {
+        this.setState({ front: false });
+      }
+    });
+  }
+
+  render() {
+    const imgSrc = this.props.src[this.buildImage()] || this.props.src["front_default"];
+    const funcs = { gender: this.toggleGender, front: this.toggleFront, shiny: this.toggleShiny };
+    return /*#__PURE__*/(
+      React.createElement("div", null, /*#__PURE__*/
+      React.createElement("img", { src: imgSrc, alt: "pokemon", className: "pokemon-sprite" }), /*#__PURE__*/
+      React.createElement(SpriteControls, {
+        funcs: funcs,
+        gender: this.state.female,
+        shiny: this.state.shiny,
+        front: this.state.front })));
+
+
+
+  }}
+
+
+function SpriteControls(props) {
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "sprite-controls" }, /*#__PURE__*/
+    React.createElement("div", {
+      className: "sprite-control sprite-controls-gender " + (props.gender ? "sprite-control-selected" : ""),
+      onClick: props.funcs.gender }, /*#__PURE__*/
+
+    React.createElement("i", { className: "fas fa-venus" })), /*#__PURE__*/
+
+    React.createElement("div", {
+      className: "sprite-control sprite-controls-shiny " + (props.shiny ? "sprite-control-selected" : ""),
+      onClick: props.funcs.shiny }, /*#__PURE__*/
+
+    React.createElement("span", null, "shiny")), /*#__PURE__*/
+
+    React.createElement("div", {
+      className: "sprite-control sprite-controls-rotate " + (!props.front ? "sprite-control-selected" : ""),
+      onClick: props.funcs.front }, /*#__PURE__*/
+
+    React.createElement("i", { className: "fas fa-undo" }))));
+
+
+
+}
+
+function PokemonDescription(props) {
+  return /*#__PURE__*/React.createElement("div", { className: "pokemon-description screen" }, props.description);
+}
+
+// class PokemonSpriteAnimated extends React.Component {
+//     constructor(props) {
+//         super(props);
+
+//         const sprites = Object.keys(props.sprites)
+//             .map(sprite => props.sprites[sprite])
+//             .filter(url => url);
+
+//         this.state = {
+//             sprites: sprites,
+//             index: 0
+//         };
+//     }
+
+//     render() {
+//         const index = this.state.index;
+//         const sprites = this.state.sprites;
+//         setTimeout(() => this.setState({ index: (index + 1) % sprites.length }), 1000);
+
+//         return <PokemonSprite src={sprites[index]} />;
+//     }
+// }
+
+function Divider(props) {
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "divider" }, /*#__PURE__*/
+    React.createElement("div", { className: "gap" }), /*#__PURE__*/
+    React.createElement("div", { className: "hinge" }), /*#__PURE__*/
+    React.createElement("div", { className: "gap" }), /*#__PURE__*/
+    React.createElement("div", { className: "hinge" }), /*#__PURE__*/
+    React.createElement("div", { className: "gap" }), /*#__PURE__*/
+    React.createElement("div", { className: "hinge" }), /*#__PURE__*/
+    React.createElement("div", { className: "gap" })));
+
+
+}
+
+function RightPanel(props) {
+  const types = props.pData.types;
+  const stats = props.pData.stats;
+  const moves = props.pData.moves;
+
+  if (types) {
+    return /*#__PURE__*/(
+      React.createElement("div", { className: "panel right-panel" }, /*#__PURE__*/
+      React.createElement("div", { className: "panel-row" }, /*#__PURE__*/
+      React.createElement(PokemonStats, { stats: stats }), /*#__PURE__*/
+      React.createElement(PokemonType, { types: types })), /*#__PURE__*/
+
+
+      React.createElement(PokemonEvolution, { evoSprites: props.evoSprites, evoNames: props.evoNames }), /*#__PURE__*/
+      React.createElement(ButtonChrome, null), /*#__PURE__*/
+      React.createElement(MoveList, { moves: moves }), /*#__PURE__*/
+      React.createElement(PokedexControls, { controls: props.controls, no: props.no })));
+
+
+  } else {
+    return Loading();
+  }
+}
+
+function PokemonStats(props) {
+  const stats = props.stats;
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "screen stats" },
+    stats.map(s => {
+      const name = s.stat.name;
+      const value = s.base_stat;
+
+      return /*#__PURE__*/React.createElement(StatLine, { name: name, value: value, key: name });
+    })));
+
+
+}
+
+function StatLine(props) {
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "stat-line" },
+    padStats(props.name, props.value, ".", 20)));
+
+
+
+
+
+}
+
+function PokemonType(props) {
+  const types = props.types;
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "type-list" }, /*#__PURE__*/
+    React.createElement("div", { className: "panel-header" }, "Types"), /*#__PURE__*/
+    React.createElement("div", { className: "type-box" },
+    types.map(t => {
+      const type = t.type.name;
+      return /*#__PURE__*/React.createElement(Type, { type: type, key: type });
+    }))));
+
+
+
+
+}
+
+function PokemonEvolution(props) {
+  const e1 = props.evoSprites[0];
+  const e2 = props.evoSprites[1];
+  const e3 = props.evoSprites[2];
+  const n1 = props.evoNames[0];
+  const n2 = props.evoNames[1];
+  const n3 = props.evoNames[2];
+
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "panel-row panel-evo" }, /*#__PURE__*/
+
+    React.createElement(PokemonSpriteSmall, { src: e1, evo: "I", name: n1 }), /*#__PURE__*/
+    React.createElement(PokemonSpriteSmall, { src: e2, evo: "II", name: n2 }), /*#__PURE__*/
+    React.createElement(PokemonSpriteSmall, { src: e3, evo: "III", name: n3 })));
+
+
+}
+
+function PokemonSpriteSmall(props) {
+  let evoImage;
+
+  if (props.src) {
+    evoImage = /*#__PURE__*/React.createElement("img", { src: props.src, alt: "pokemon", className: "pokemon-sprite pokemon-sprite-small" });
+  } else {
+    evoImage = /*#__PURE__*/React.createElement(PokeBall, null);
+  }
+
+  return /*#__PURE__*/(
+    React.createElement("div", null, /*#__PURE__*/
+    React.createElement("div", { className: "flex-center" }, /*#__PURE__*/
+    React.createElement("div", { className: "evo-num" }, props.evo)),
+
+    evoImage, /*#__PURE__*/
+    React.createElement("div", { className: "screen evo-name" }, props.name || "No Data")));
+
+
+}
+
+function PokeBall(props) {
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "pokemon-sprite pokemon-sprite-small empty-evo" }, /*#__PURE__*/
+    React.createElement("div", { className: "poke-ball" }, /*#__PURE__*/
+    React.createElement("div", { className: "poke-ball-top" }), /*#__PURE__*/
+    React.createElement("div", { className: "poke-ball-center" }, /*#__PURE__*/
+    React.createElement("div", { className: "poke-ball-dot" })), /*#__PURE__*/
+
+    React.createElement("div", { className: "poke-ball-bottom" }))));
+
+
+
+}
+
+function ButtonChrome(props) {
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "panel-row blue-buttons" }, /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" }), /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" }), /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" }), /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" }), /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" }), /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" }), /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" }), /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" }), /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" }), /*#__PURE__*/
+    React.createElement("div", { className: "blue-button" })));
+
+
+}
+class MoveList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      index: 0,
+      currentMove: {},
+      loading: false };
+
+    this.nextMove = this.nextMove.bind(this);
+    this.prevMove = this.prevMove.bind(this);
+  }
+
+  componentDidMount() {
+    // console.log(this.props.moves[0].move.name);
+    this.loadMoves();
+  }
+
+  loadMoves() {
+    this.setState({ loading: true, index: this.state.index }, () => {
+      fetch(this.props.moves[this.state.index].move.url).
+      then(response => response.json()).
+      then(data => {
+        this.setState({ currentMove: data, loading: false });
+      });
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.moves !== prevProps.moves) {
+      this.setState({ index: 0 }, this.loadMoves);
+    }
+  }
+
+  nextMove() {
+    const nextIndex = Math.min(this.state.index + 1, this.props.moves.length - 1);
+    this.setState({ index: nextIndex }, this.loadMoves);
+  }
+
+  prevMove() {
+    const nextIndex = Math.max(this.state.index - 1, 0);
+    this.setState({ index: nextIndex }, this.loadMoves);
+  }
+
+  render() {
+    let moves;
+    // let cur_move = this.props.moves[this.state.index];
+    if (this.state.loading || Object.keys(this.state.currentMove).length === 0) {
+      moves = /*#__PURE__*/React.createElement(MovesLoading, null);
+    } else {
+      const lvl = this.props.moves[this.state.index].version_group_details[0].level_learned_at;
+      moves = /*#__PURE__*/React.createElement(MoveEntry, { move: this.state.currentMove, lvl: lvl });
+    }
+
+    return /*#__PURE__*/(
+      React.createElement("div", { className: "move-list" },
+      moves, /*#__PURE__*/
+      React.createElement("div", { className: "move-controls" }, /*#__PURE__*/
+      React.createElement("div", { className: "move-arrow", onClick: this.prevMove }, /*#__PURE__*/
+      React.createElement("i", { className: "fas fa-caret-up" })), /*#__PURE__*/
+
+      React.createElement("div", { className: "move-arrow", onClick: this.nextMove }, /*#__PURE__*/
+      React.createElement("i", { className: "fas fa-caret-down" })))));
+
+
+
+
+  }}
+
+
+function MovesLoading() {
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "move-body move-screen screen" }, /*#__PURE__*/
+    React.createElement("div", { className: "move-left" }, /*#__PURE__*/
+    React.createElement("div", { className: "move-name", style: { textTransform: "none" } }, "xxxxx xxxxx"), /*#__PURE__*/
+
+
+    React.createElement("div", { className: "move-stat" }, padStats("Accuracy", "xx", ".", 16)), /*#__PURE__*/
+    React.createElement("div", { className: "move-stat" }, padStats("Power", "xx", ".", 16)), /*#__PURE__*/
+    React.createElement("div", { className: "move-stat" }, padStats("PP", "xx", ".", 16))), /*#__PURE__*/
+
+    React.createElement("div", { className: "move-right" }, /*#__PURE__*/
+    React.createElement("div", { className: "move-type" }, "Type: xxxxx"), /*#__PURE__*/
+
+    React.createElement("div", { className: "move-learn" }, "Learn: Lvl xx"))));
+
+
+
+}
+
+function MoveEntry(props) {
+  const move = props.move;
+  const name = move.name || move.names.filter(m => m.language.name === "en")[0].name;
+  const acc = move.accuracy;
+  const pow = move.power;
+  const pp = move.pp;
+  const type = move.type.name;
+  //   const status = "" || "---";˝
+  const lvl = props.lvl;
+  // console.log("move ", move);
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "move-body move-screen screen" }, /*#__PURE__*/
+    React.createElement("div", { className: "move-left" }, /*#__PURE__*/
+    React.createElement("div", { className: "move-name" }, name), /*#__PURE__*/
+    React.createElement("div", { className: "move-stat" }, padStats("Accuracy", acc, ".", 16)), /*#__PURE__*/
+    React.createElement("div", { className: "move-stat" }, padStats("Power", pow, ".", 16)), /*#__PURE__*/
+    React.createElement("div", { className: "move-stat" }, padStats("PP", pp, ".", 16))), /*#__PURE__*/
+
+    React.createElement("div", { className: "move-right" }, /*#__PURE__*/
+    React.createElement("div", { className: "move-type" }, "Type: ", type), /*#__PURE__*/
+
+    React.createElement("div", { className: "move-learn" }, "Learn: Lvl ", lvl))));
+
+
+
+}
+
+function PokedexControls(props) {
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "panel-row controls" }, /*#__PURE__*/
+    React.createElement(Button, { dir: "left", onClick: props.controls.prev }), /*#__PURE__*/
+    React.createElement(NumInput, { no: props.no, func: props.controls.pick }), /*#__PURE__*/
+    React.createElement(Button, { dir: "right", onClick: props.controls.next })));
+
+
+}
+
+function Button(props) {
+  return /*#__PURE__*/React.createElement("div", { className: "button", onClick: props.onClick });
+}
+
+class NumInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: 1 };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({ id: e.target.value });
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.func(this.state.id);
+  }
+
+  render() {
+    return /*#__PURE__*/(
+      React.createElement("div", null, /*#__PURE__*/
+      React.createElement("input", {
+        type: "number",
+        className: "screen num-input",
+        placeholder: this.props.no,
+        onChange: this.handleChange }), /*#__PURE__*/
+
+      React.createElement("div", { className: "submit", onClick: this.handleClick })));
+
+
+  }}
+
+
+function Loading() {
+  return /*#__PURE__*/React.createElement("h1", null, "LOADING...");
+}
+
+function Type(props) {
+  return /*#__PURE__*/React.createElement("div", { className: "type " + props.type }, props.type);
+}
+
+ReactDOM.render( /*#__PURE__*/React.createElement(Pokedex, null), document.getElementById("root"));
+
+// class TypeList extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             loading: false,
+//             data: []
+//         };
+//     }
+
+//     componentDidMount() {
+//         this.setState({ loading: true });
+
+//         let request = "https://pokeapi.co/api/v2/type/";
+
+//         fetch(request)
+//             .then(response => response.json())
+//             .then(data => this.setState({ data: data.results, loading: false }));
+//     }
+
+//     render() {
+//         return (
+//             <div className="type-list">
+//                 {this.state.loading ? (
+//                     <Loading />
+//                 ) : (
+//                     this.state.data.map(d => {
+//                         return <Type type={d.name} key={d.name} />;
+//                     })
+//                 )}
+//             </div>
+//         );
+//     }
+// }
+//# sourceURL=pen.js
+    </script>
+
+  
 </body>
+
 </html>
