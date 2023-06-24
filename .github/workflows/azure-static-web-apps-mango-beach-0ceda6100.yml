@@ -10,7 +10,7 @@
 name: Deploy web app to Azure Static Web Apps
 
 env:
-  APP_LOCATION: "/The Lung Warriors /dist/" # location of your client code
+  APP_LOCATION: "The Lung Warriors /dist/" # location of your client code
   API_LOCATION: "api" # location of your api source code - optional
   APP_ARTIFACT_LOCATION: "build" # location of client code build output
 
